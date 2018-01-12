@@ -1,0 +1,131 @@
+.logo{
+	height: 60px;
+	width: 85%;
+	border-bottom: solid 1px #000;
+	padding-left: 65px;
+	padding-top: 15px;
+	font-size: 30px;
+	font-weight: 900;
+	color: #f00;
+	margin: auto;
+}
+.div1,.div2{
+	margin-top: 60px;
+}
+.div1{
+	width: 80%;
+	height: 400px;
+}
+.div2{
+	margin-left: 10%;
+}
+#div22{
+	height: 100%;
+	border: solid 1px #999;
+}
+.div221{
+	height: 30px;
+}
+#nomal,#flash{
+	width: 50%;
+	height: 30px;
+	float: left;
+	text-align: center;
+	padding-top: 5px;
+	text-decoration: none;
+	border-bottom: solid 1px #999;
+}
+.userdiv_nomal,.userdiv_flash{
+	margin-top: 10px;
+}
+.userdiv_nomal>input{
+	height: 35px;
+}
+#passdiv{
+	margin-top: 20px;
+}
+#repassword{
+	text-align: right;
+	margin-top: 15px;
+}
+#repassword a{
+	color: #f00;
+	font-size: 15px;
+	font-weight: 800;
+}
+#loginbtn{
+	margin-bottom: 20px;
+}
+#loginbtn a{	
+	font-size: 20px;
+	font-family: "黑体";
+}
+#teamwork{
+	border-right: solid 1px #999;
+	border-bottom: solid 1px #999;
+	border-left: solid 1px #999;
+	padding-top: 5px;
+	color: #999;
+}
+#teamlink{
+	margin-bottom: 20px;
+}
+#teamlink button{
+	width: 41px;
+	height: 36px;
+	background: url('../images/weixin.jpg') no-repeat;
+}
+#phone_num{
+	width: 100%;
+	height: 35px;
+	margin-bottom: 15px;
+}
+#ver_num{
+	height: 35px;
+}
+.font_center{
+	text-align: center;
+}
+#weixinimg img{
+	width: 90%;
+	height: 90%;
+}
+.errorInfo{
+	width: 100%;
+	height: 100%;
+	font-size: 20px;
+	color: #f00;
+	text-align: center;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+@media (max-width:980px) and (min-width:767px) {
+	#div22,#teamwork,#div21{
+		width: 700px;
+	}
+
+}
+@media (max-width:767px) {
+	#div22{
+		width: 100%;
+	}
+	.userdiv_nomal,#repassword,#loginbtn,.div_media{
+		width: 90%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.userdiv_nomal>input{
+		height: 35px;
+	}
+	#phone_num{
+		width: 50%;
+		height: 35px;
+		float: left;
+		margin-left: 5%;
+		margin-right: 10%;
+	}
+	.div_media>input{
+		height: 35px;
+	}
+}

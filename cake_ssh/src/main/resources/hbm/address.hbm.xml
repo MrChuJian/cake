@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="zzw.entity.Address" table="address">
+		<id name="aid" column="aid">
+			<generator class="native"></generator>
+		</id>
+		<property name="addressee" column="addressee"></property>
+		<property name="address" column="address"></property>
+		<property name="addressee_phone" column="addressee_phone"></property>
+		<property name="addr_default" column="addr_default"></property>
+		<property name="code" column="code"></property>
+		<property name="user_color" column="user_color"></property>
+		<property name="telephone" column="telephone"></property>
+		<property name="gmt_create" column="gmt_create"></property>
+		<property name="gmt_modified" column="gmt_modified"></property>
+		
+		<many-to-one name="user" class="zzw.entity.User" column="uaid"></many-to-one>
+		<set name="orderForGoodss">
+			<key column="aid"></key>
+			<one-to-many class="zzw.entity.OrderForGoods"/>
+		</set>
+	</class>
+</hibernate-mapping>

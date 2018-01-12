@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>管理员页面</title>
+		<link rel="stylesheet" type="text/css" href="../CSS/bootstrap/css/3.3.7/bootstrap.css">
+		<link rel="stylesheet" href="../CSS/admin.css">
+		<script src="../JavaScripts/angular/angular.js" type="text/javascript"></script>
+		<script type="text/javascript" src="../JavaScripts/admin.js" defer></script>
+	</head>
+	<body ng-app="app">
+		<div class="container" ng-controller="SeriesCtrl">
+			<div class="row">
+				<form class="formDiv" action="http://192.168.1.109:8080/cake_ssh/cake_add.action" method="post" enctype="multipart/form-data">
+					<div class="nameChinese">
+						货品名称（中文）：<br/>
+						<input type="text" name="name">
+					</div><!-- 
+					<div class="nameEnglish">
+						goodsName（English）：<br/>
+						<input type="text" name="nameChinese">
+					</div> -->
+					<div class="cakeSeries">
+						蛋糕系列：<br/>
+						<select name="variety.vid">
+							<option value="" disabled>——请选择——</option>
+							<option ng-repeat="(index,seriesItem) in SelectSeries" ng-value="index+1">{{seriesItem}}</option>
+						</select>
+					</div>
+					<div class="goodsSize">
+						货品大小：<br/>
+						<input type="text" name="size">  磅
+					</div>
+					<div class="goodsPrice">
+						货品单价：<br/>
+						<input type="text" name="price">
+					</div>
+					<div class="goodsSweetness">
+						甜度系数：
+						<select name="sweetness">
+							<option value="" disabled>——请选择——</option>
+							<option value="1">★</option>
+							<option value="2">★★</option>
+							<option value="3">★★★</option>
+							<option value="4">★★★★</option>
+							<option value="5">★★★★★</option>
+						</select>
+					</div>
+					<div class="goodsImg">
+						选择上架货品展示图片：
+						<input id="selectImg" type="file" name="upload" multiple="multiple">
+						<div id="imgDiv" class="showImg"></div>
+					</div>
+					<div class="submitInp">
+						<input type="submit" value="提交">
+					</div>
+					
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

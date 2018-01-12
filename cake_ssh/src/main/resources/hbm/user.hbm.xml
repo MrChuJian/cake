@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="zzw.entity.User" table="user"  dynamic-insert="true" dynamic-update="true">
+		<id name="uid" column="uid">
+			<generator class="native"></generator>
+		</id>
+		<property name="username" column="username"></property>
+		<property name="password" column="password"></property>
+		<property name="phone" column="phone"></property>
+		<property name="sex" column="sex"></property>
+		<property name="isLunar" column="isLunar"></property>
+		<property name="birth" column="birth"></property>
+		<property name="email" column="email"></property>
+		<property name="balance" column="balance"></property>
+		<property name="gmt_create" column="gmt_create" update="false"></property>
+		<property name="gmt_modified" column="gmt_modified"></property>
+		
+		<set name="addressSet">
+			<key column="uaid"></key>
+			<one-to-many class="zzw.entity.Address"/>
+		</set>
+		<set name="cardSet">
+			<key column="ucid"></key>
+			<one-to-many class="zzw.entity.Card"/>
+		</set>
+		<set name="tradeRecord">
+			<key column="utid"></key>
+			<one-to-many class="zzw.entity.TradeRecord"/>
+		</set>
+		<set name="orderForGoodss" cascade="all">
+			<key column="uid"></key>
+			<one-to-many class="zzw.entity.OrderForGoods"/>
+		</set>
+		<one-to-one name="shopCar" class="zzw.entity.ShopCar" property-ref="user" cascade="save-update,delete"></one-to-one>
+		
+	</class>
+</hibernate-mapping>

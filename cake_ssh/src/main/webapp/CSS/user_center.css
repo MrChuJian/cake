@@ -1,0 +1,224 @@
+.hengxian{
+	width: 100%;
+	height: 1px;
+	background-color:  #999;
+	position: fixed;
+	top: 40px;
+	z-index: 98;
+}
+.navigation{
+	width: 100%;
+	height: 100px;
+	box-shadow: 0px 3px 3px #999;
+	position: fixed;
+	z-index: 97;
+	top: 0px;
+	background-color: #fff;
+}
+.midDiv{
+	width: 1200px;
+	height: 100%;
+	margin: auto;
+}
+.cake_logo{
+	width: 200px;
+	height: 100px;
+	float: left;
+	position: fixed;
+	z-index: 99;
+}
+.lo_re{
+	width: 100%;
+	height: 30px;
+}
+.lo_re a,.lo_re div,.lo_re input{
+	float: right;
+	margin-right: 20px;
+	margin-top: 5px;
+	color: #999;
+	text-decoration: none;
+}
+.lo_re input{
+	width: 70px;
+	height: 30px;
+	font-size: 10px;
+}
+.shoppingCar{
+	width: 30px;
+	height: 30px;
+	float: right;
+}
+.navi_item{
+	width: 1000px;
+	height: 80px;
+	margin-left: 200px;
+}
+.blank{
+	width: 25%;
+	height: 50%;
+}
+.all,.series,.new_activity,.user{
+	width: 25%;
+	height: 100%;
+	float: left;
+	font-size: 20px;
+	text-align: center;
+}
+.center_logo{
+	width: 65%;
+	height: 100px;
+	margin-top: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	border-bottom: solid 1px #999;
+	color: #999;
+	font-weight: 900;
+	font-size: 20px;
+	font-family: '黑体';
+	text-align: center;
+}
+.user_center{
+	width: 1200px;
+	height: 100%;
+	margin-top: 40px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.user_navi{
+	height: 100%;
+	border-top: solid 2px #999;
+	border-bottom: solid 2px #999;
+}
+.navi_font{
+	width: 100%;
+	height: 25px;
+	font-size: 20px;
+	font-weight: 900;
+	font-family: '黑体';
+	color: #999;
+	text-align: center;
+	margin-top: 10px;
+	margin-right: 5px;
+}
+.center_view{
+	margin-left: 30%;
+}
+.address_view{
+	width: 80%;
+	height: 100%;
+	margin: auto;
+	border: solid 4px #eee; 
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+.address_info{
+	width: 94%;
+	height: 94%;
+	margin: 3%;
+}
+.table_thead{
+	background-color: #eee;
+	border: solid 1px #eee;
+}
+.table_body{
+	text-align: center;
+	height: 55px;
+	border: solid 1px #eee;
+}
+.add_address{
+	width: 100%;
+	height: 25px;
+	color: #999;
+	font-size: 15px;
+	font-weight: 900;
+	background-color: #eee;
+}
+.add_addr_view{
+	width: 100%;
+	height: 100%;
+	border: solid 1px #eee;
+}
+.addr_operate a{
+	color: #000;
+}
+.filter_select{
+	width: 100%;
+	height: 50px;
+}
+.filter_all{
+	width: 15%;
+	height: 100%;
+	margin-left: 5%;
+	color: #999;
+	font-size: 15px;
+	font-family: '黑体';
+	text-align: center;
+	float: left;	
+}
+.search_inp{
+	width: 280px;
+	height: 40px;
+	margin-left: 5%;
+	margin-top: 15px;
+}
+.search_inp input{
+	height: 30px;
+}
+.search_inp div{
+	width: 40px;
+	height: 30px;
+	color: #fff;
+	font-family: '黑体';
+	font-size: 15px;
+	padding-top: 10px;
+	text-decoration: none;
+	background-color: #8B4513;
+	text-align: center;
+	float: right;
+}
+.card_font{
+	color: #999;
+	font-family: '黑体';
+	font-size: 15px;
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+.card_inp{
+	width: 320px;
+}
+.card_inp input{
+	height: 30px;
+}
+.card_inp a{
+	text-decoration: none;
+	color: #fff;
+	background-color: #8B4513;
+	float: right;
+	margin-top: 7px;
+}
+.balance_view{
+	width: 100%;
+	height: 40px;
+	font-family: '黑体';
+	font-size: 20px;
+	font-weight: 600;
+	color: #999;
+	border-bottom: solid 2px #999;
+}
+.out_in_table{
+	margin-top: 15px;
+	background-color: #eee;
+	color: #000;
+}
+.out_in_table tr{
+	border-bottom: solid 1px #999;
+}
+@media (max-width:980px) {	
+	.user_center{
+		width: 980px;
+	}
+	.navi_font{
+		width: 16%;
+		float: left;
+	}
+}

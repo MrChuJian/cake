@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="zzw.entity.ShopCar" table="shopCar">
+		<id name="sid" column="sid">
+			<generator class="native"></generator>
+		</id>
+		<property name="gmt_create" column="gmt_create"></property>
+		<property name="gmt_modified" column="gmt_modified"></property>
+		
+		<many-to-one name="user" column="uid" class="zzw.entity.User" unique="true" cascade="save-update,delete"></many-to-one>
+		<set name="shopCarCakes" cascade="all">
+			<key column="sid"></key>
+			<one-to-many class="zzw.entity.ShopCarCake"/>
+		</set>
+	</class>
+</hibernate-mapping>

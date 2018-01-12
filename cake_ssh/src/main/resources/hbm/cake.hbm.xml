@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="zzw.entity.Cake" table="cake">
+		<id name="cid" column="cid">
+			<generator class="native"></generator>
+		</id>
+		<property name="name" column="name"></property>
+		<property name="price" column="price"></property>
+		<property name="size" column="size"></property>
+		<property name="wish" column="wish"></property>
+		<property name="sweetness" column="sweetness"></property>
+		<property name="gmt_create" column="gmt_create"></property>
+		<property name="gmt_modified" column="gmt_modified"></property>
+		
+		<many-to-one name="variety" column="vid" class="zzw.entity.Variety"></many-to-one>
+		<set name="pictures" cascade="save-update,delete">
+			<key column="cid"></key>
+			<one-to-many class="zzw.entity.Picture"/>
+		</set>
+		<set name="shopCarCakes" cascade="all">
+			<key column="cid"></key>
+			<one-to-many class="zzw.entity.ShopCarCake"/>
+		</set>
+		<set name="orderCakes" cascade="all">
+			<key column="cid"></key>
+			<one-to-many class="zzw.entity.OrderCake"/>
+		</set>
+	</class>
+</hibernate-mapping>

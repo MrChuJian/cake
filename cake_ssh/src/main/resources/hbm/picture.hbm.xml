@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="zzw.entity.Picture" table="picture">
+		<id name="pid" column="pid">
+			<generator class="native"></generator>
+		</id>
+		<property name="file" column="file"></property>
+		<property name="gmt_create" column="gmt_create"></property>
+		<property name="gmt_modified" column="gmt_modified"></property>
+		
+		<many-to-one name="cake" column="cid" class="zzw.entity.Cake"></many-to-one>
+	</class>
+</hibernate-mapping>

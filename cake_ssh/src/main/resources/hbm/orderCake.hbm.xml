@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="zzw.entity.OrderCake" table="orderCake">
+		<id name="ocid" column="ocid">
+			<generator class="native"></generator>
+		</id>
+		<property name="num" column="num"></property>
+		<property name="title" column="title"></property>
+		<property name="price" column="price"></property>
+		<property name="totalFee" column="totalFee"></property>
+		<property name="gmt_create" column="gmt_create"></property>
+		<property name="gmt_modified" column="gmt_modified"></property>
+		
+		<many-to-one name="cake" class="zzw.entity.Cake" column="cid" cascade="all"></many-to-one>
+		<many-to-one name="orderForGoods" class="zzw.entity.OrderForGoods" column="oid" cascade="all"></many-to-one>
+		
+	</class>
+</hibernate-mapping>

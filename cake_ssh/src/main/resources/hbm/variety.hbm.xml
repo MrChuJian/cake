@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="zzw.entity.Variety" table="variety">
+		<id name="vid" column="vid">
+			<generator class="native"></generator>
+		</id>
+		<property name="variety" column="variety"></property>
+		<property name="gmt_create" column="gmt_create"></property>
+		<property name="gmt_modified" column="gmt_modified"></property>
+		
+		<set name="cakes">
+			<key column="vid"></key>
+			<one-to-many class="zzw.entity.Cake"/>
+		</set>
+	</class>
+</hibernate-mapping>

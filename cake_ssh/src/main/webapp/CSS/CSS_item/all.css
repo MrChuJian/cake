@@ -1,0 +1,13 @@
+.show_div{
+	width: 1800px;
+	margin: 0 auto;
+}
+.scroll_div{
+	width: 5400px;
+	overflow: hidden;
+}
+.a1 img,.a2 img,.a3 img{
+	width: 1800px;
+	height: 500px;
+	float: left;
+}

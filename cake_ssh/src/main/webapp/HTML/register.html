@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>会员免费注册</title>
+		<link rel="stylesheet" type="text/css" href="../CSS/bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="../CSS/bootstrap/css/bootstrap-responsive.css">
+		<link rel="stylesheet" type="text/css" href="../CSS/registerCss.css">
+		<script src="../JavaScripts/angular/angular.js"></script>
+		<script src="../JavaScripts/registerJs.js" type="text/javascript" charset="utf-8" defer></script>
+	</head>
+	<body ng-app="app">
+		<div class="container">
+			<div class="row-fluid">
+				<div class="span12 logo">
+					会员注册
+				</div>				
+			</div>
+
+			<div class="row-fluid" ng-controller="registerCtrl">
+				<div id="div1" class="span4 offset2 hidden-phone">
+					<img src="../images/re-logo.jpeg" alt="logo">
+				</div>
+				<div id="div2" class="span4 offset1">
+					<div id="div21" class="row-fluid">
+						<div class="span5" style="color: #999;">
+							注册新用户
+						</div>
+						<div class="span6 offset1" style="color: #999;">
+							我已经注册，现在就<a href="login.html" style="color: #f00;">登录</a>
+						</div>				   						
+					</div>
+
+					<form id="register_form" action="http://192.168.1.109:8080/cake_ssh/user_register.action" method="get" accept-charset="utf-8">
+						<div id="div22" class="row-fluid">
+							 <div class="span5">
+							    <input id="phone_num" type="text" name="phone" maxlength="11" placeholder="请输入手机号" ng-model="phone_num">
+						    </div>						
+							<div class="span6 btn offset1">
+								<a id="get_code" href="#">获取手机验证码</a>
+							</div>
+						</div>
+
+						<input id="ver_num" class="span12" type="text" name="registerVerifyCode" placeholder="请输入验证码" ng-model="ver_num">
+						<input id="password1" class="span12" type="password" name="password" placeholder="设定登录密码">
+						<input id="password2" class="span12" type="password" placeholder="再次输入密码">
+
+						<div class="span12">
+							<input type="checkbox" name="" ng-model="check">请阅读<a href="#">《XXX服务条款》</a>
+						</div>
+
+						<input id="registerBtn" type="submit" class="span12 btn btn-success" ng-show="check-value" value="立即注册">
+
+						<div class="span12 btn" ng-hide="check-value" disabled>
+							<a href="#">立即注册</a>
+						</div>
+					</form>
+					
+
+				</div>
+			</div>
+
+		</div>
+	</body>
+</html>

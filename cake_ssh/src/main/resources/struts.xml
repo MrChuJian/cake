@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	
+	<!-- 设置浏览器是否缓存静态内容,默认值为true(生产环境下使用),开发阶段最好关闭 -->
+    <constant name="struts.serve.static.browserCache" value="false" />
+    <!-- 当struts的配置文件修改后,系统是否自动重新加载该文件,默认值为false(生产环境下使用),开发阶段最好打开 -->
+    <constant name="struts.configuration.xml.reload" value="true" />
+    <!-- 开发模式下使用,这样可以打印出更详细的错误信息 -->
+    <constant name="struts.devMode" value="true" />
+    <!-- 默认的视图主题 -->
+    <constant name="struts.ui.theme" value="simple" />
+    <!--<constant name="struts.objectFactory" value="spring" />-->
+    <!--解决乱码    -->
+    <constant name="struts.i18n.encoding" value="UTF-8" />
+    <constant name="struts.multipart.maxSize" value="10701096"/>
+	
+	
+	<package name="demo1" extends="json-default" namespace="/">
+		
+		<!-- 声明拦截器 -->
+		<interceptors>
+			<interceptor name="loginInterceptor" class="zzw.interceptor.LoginInterceptor"></interceptor>
+		</interceptors>
+		
+		
+		<action name="user_*" class="userAction" method="{1}">
+			<!-- 使用自定义拦截器 -->
+			<interceptor-ref name="loginInterceptor">
+				<!-- name:excludeMethods  不拦截的方法 -->
+				<param name="excludeMethods">
+					logout, getCaptcha, getRegisterVerificationCode, getLoginVerificationCode, register, nomalLogin, verificationCodeLogin
+				</param>
+			</interceptor-ref>
+			<!-- 手动使用默认拦截器，使用自定义拦截器后，默认拦截器不自动使用 -->
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			
+			
+			<result name="registerSuccess" type="redirect">/HTML/login.html</result>
+			<result name="LoginSuccess" type="redirect">/HTML/index.html</result>
+			<result name="loginFail" type="redirect">/HTML/login.html</result>
+			<result name="noLogin" type="redirect">/HTML/login.html</result>
+			<result name="toUserCenter" type="redirect">/HTML/user_center.html</result>
+			<result name="getBasicInformation" type="json">
+				<param name="root">user</param>
+			</result>
+			<result name="getLoginVerificationCode" type="json">
+				<param name="root">msg</param>
+			</result>
+			<result name="getRegisterVerificationCode" type="json">
+				<param name="root">msg</param>
+			</result>
+			<result name="update" type="redirectAction" >user_toUserCenter.action</result>
+			<result name="getCaptcha" type="stream">
+				<param name="contentType">image/jpeg;charset=ISO8859-1</param>  
+				<param name="inputName">inputStream</param> 
+			</result>
+			<result name="logout" type="redirect">/HTML/index.html</result>
+			<allowed-methods>logout, getCaptcha, update, getBasicInformation, toUserCenter, getRegisterVerificationCode, getLoginVerificationCode, register, nomalLogin, verificationCodeLogin</allowed-methods>
+		</action>
+		
+		<action name="variety_*" class="varietyAction" method="{1}">
+			<result name="findAll" type="json">
+				<param name="root">varietys</param>
+			</result>
+			<result name="test">index.html</result>
+			<allowed-methods>test, findAll</allowed-methods>
+		</action>
+		
+		<action name="address_*" class="addressAction" method="{1}">
+		
+			<!-- 使用自定义拦截器 -->
+			<interceptor-ref name="loginInterceptor">
+				<!-- name:excludeMethods  不拦截的方法 -->
+				<param name="excludeMethods">
+					
+				</param>
+			</interceptor-ref>
+			<!-- 手动使用默认拦截器，使用自定义拦截器后，默认拦截器不自动使用 -->
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		
+			<result name="getAddressInformation" type="json">
+				<param name="root">addresss</param>
+			</result>
+			<result name="add" type="json">
+				<param name="root">msg</param>
+			</result>
+			<result name="delete" type="json">
+				<param name="root">msg</param>
+			</result>
+			<allowed-methods>getAddressInformation, add, update, delete</allowed-methods>
+		</action>
+		
+		<action name="card_*" class="cardAction" method="{1}">
+		
+			<!-- 使用自定义拦截器 -->
+			<interceptor-ref name="loginInterceptor">
+				<!-- name:excludeMethods  不拦截的方法 -->
+				<param name="excludeMethods">
+					
+				</param>
+			</interceptor-ref>
+			<!-- 手动使用默认拦截器，使用自定义拦截器后，默认拦截器不自动使用 -->
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		
+			<result name="getCardInformation" type="json">
+				<param name="root">cards</param>
+			</result>
+			<result name="delete" type="json">
+				<param name="root">msg</param>
+			</result>
+			<result name="update" type="json">
+				<param name="root">msg</param>
+			</result>
+			<allowed-methods>update, delete, getCardInformation</allowed-methods>
+		</action>
+		
+		<action name="orderForGoods_*" class="orderForGoodsAction" method="{1}">
+		
+			<!-- 使用自定义拦截器 -->
+			<interceptor-ref name="loginInterceptor">
+				<!-- name:excludeMethods  不拦截的方法 -->
+				<param name="excludeMethods">
+					
+				</param>
+			</interceptor-ref>
+			<!-- 手动使用默认拦截器，使用自定义拦截器后，默认拦截器不自动使用 -->
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		
+			<result name="getOrderForGoodsInformation" type="json">
+				<param name="root">orderForGoodss</param>
+			</result>
+			<result name="delete" type="json">
+				<param name="root">msg</param>
+			</result>
+			<allowed-methods>delete, getOrderForGoodsInformation</allowed-methods>
+		</action>
+		
+		<action name="tradeRecord_*" class="tradeRecordAction" method="{1}">
+		
+			<!-- 使用自定义拦截器 -->
+			<interceptor-ref name="loginInterceptor">
+				<!-- name:excludeMethods  不拦截的方法 -->
+				<param name="excludeMethods">
+					
+				</param>
+			</interceptor-ref>
+			<!-- 手动使用默认拦截器，使用自定义拦截器后，默认拦截器不自动使用 -->
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		
+			<result name="getTradeRecordInformation" type="json">
+				<param name="root">tradeRecords</param>
+			</result>
+			<allowed-methods>getTradeRecordInformation</allowed-methods>
+		</action>
+		
+		<action name="cake_*" class="cakeAction" method="{1}">
+			<interceptor-ref name="loginInterceptor">
+				<!-- name:excludeMethods  不拦截的方法 -->
+				<param name="excludeMethods">
+					findByVariety, findAll, add
+				</param>
+			</interceptor-ref>
+			<!-- 手动使用默认拦截器，使用自定义拦截器后，默认拦截器不自动使用 -->
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		
+			<param name="savePath">/img</param>
+			<result name="add">/index.html</result>
+			<result name="show">/show.jsp</result>
+			<result name="findAll" type="json">
+				<param name="root">cakeVOs</param>
+			</result>
+			<result name="findByVariety" type="json">
+				<param name="root">cakeVOs</param>
+			</result>
+			<result name="getDetail" type="json">
+				<param name="root">cakeVO</param>
+			</result>
+			<result name="generateOrder">/HTML/index.html</result>
+			<allowed-methods>generateOrder, getDetail, toDetail, buy, addToShopCar, findByVariety, findAll, add</allowed-methods>
+		</action>
+		
+		<action name="picture_*" class="pictureAction" method="{1}">
+			<result name="show" type="stream">
+				<param name="contentType">image/jpeg;charset=ISO8859-1</param>  
+				<param name="inputName">inputStream</param> 
+			</result>
+			<result name="findByFileName" type="stream">
+				<param name="contentType">image/jpeg;charset=ISO8859-1</param>  
+				<param name="inputName">inputStream</param> 
+			</result>
+			<allowed-methods>findByFileName,show</allowed-methods>
+		</action>
+		
+		<action name="shopCar_*" class="shopCarAction" method="{1}">
+			<result name="findAll" type="json">
+				<param name="root">shopCarCakeVOs</param>
+			</result>
+			<result name="delete" type="json">
+				<param name="root">msg</param>
+			</result>
+			<allowed-methods>delete, findAll</allowed-methods>
+		</action>
+	</package>
+</struts>

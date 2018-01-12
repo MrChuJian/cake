@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="zzw.entity.OrderForGoods" table="orderForGoods">
+		<id name="oid" column="oid">
+			<generator class="native"></generator>
+		</id>
+		
+		<property name="payment" column="payment"></property>
+		<property name="paymentType" column="paymentType"></property>
+		<property name="postage" column="postage"></property>
+		<property name="paymentTime" column="paymentTime"></property>
+		<property name="consignTime" column="consignTime"></property>
+		<property name="finishTime" column="finishTime"></property>
+		<property name="buyerMessage" column="buyerMessage"></property>
+		<property name="buyerName" column="buyerName"></property>
+		<property name="buyerRate" column="buyerRate"></property>
+		<property name="state" column="state"></property>
+		<property name="gmt_create" column="gmt_create"></property>
+		<property name="gmt_modified" column="gmt_modified"></property>
+			
+		<set name="orderCakes" cascade="all">
+			<key column="oid"></key>
+			<one-to-many class="zzw.entity.OrderCake"/>
+		</set>
+		<many-to-one name="address" class="zzw.entity.Address" column="aid"></many-to-one>
+		<many-to-one name="user" class="zzw.entity.User" column="uid" cascade="all"></many-to-one>
+	</class>
+</hibernate-mapping>

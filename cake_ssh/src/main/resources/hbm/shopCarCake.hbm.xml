@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="zzw.entity.ShopCarCake" table="shopCarCake">
+		<id name="scid" column="scid">
+			<generator class="native"></generator>
+		</id>
+		<property name="num" column="num"></property>
+		<property name="title" column="title"></property>
+		<property name="price" column="price"></property>
+		<property name="totalFee" column="totalFee"></property>
+		<property name="gmt_create" column="gmt_create"></property>
+		<property name="gmt_modified" column="gmt_modified"></property>
+		
+		<many-to-one name="shopCar" column="sid" class="zzw.entity.ShopCar" cascade="all"></many-to-one>
+		<many-to-one name="cake" column="cid" class="zzw.entity.Cake" cascade="all"></many-to-one>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>蛋糕商城</title>
+		<link rel="stylesheet" href="../CSS/indexCss.css">
+		<link rel="stylesheet" type="text/css" href="../CSS/bootstrap/css/3.3.7/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="../CSS/bootstrap/css/bootstrap-responsive.css">
+		<script src="../JavaScripts/indexJs.js" type="text/javascript" defer></script>
+		<script src="../JavaScripts/angular/angular.js" type="text/javascript"></script>
+		<script src="../JavaScripts/angular/angular-route.js" type="text/javascript"></script>
+		<script src="../JavaScripts/angular/angular-animate.js" type="text/javascript"></script>
+		<script src="../JavaScripts/jQuery/jquery-3.2.1.js" type="text/javascript"></script>
+		<script src="../JavaScripts/bootstrap/bootstrap.js" type="text/javascript"></script>
+		<script type="text/javascript" src="../JavaScripts/indexJQ.js" defer></script>
+	</head>
+	<body ng-app="app">
+		
+
+		<div id="navigation" class="navigation">
+			<div id="hengxian" class="hengxian">
+				
+			</div>
+			<div class="midDiv">
+				<div class="cake_logo visible-desktop">
+					<img src="../images/logo.png" alt="mcake">
+				</div>
+
+				<div ng-controller="CookieCtrl">
+					<div class="lo_re" ng-show="!isCookie" ng-cloak>
+						<a href="login.html" target="_blank">用户登录</a>
+						<a href="register.html" target="_blank">新用户注册</a>
+					</div>
+
+					<div class="lo_re" ng-show="isCookie" ng-cloak>
+						<a href="shoppingCar.html" title=""><img class="shoppingCar" src="../images/shoppingCar.png"></a>
+						<a id="exitLogin" href="http://192.168.1.109:8080/cake_ssh/user_logout.action" class="btn">退出登录</a>
+						<a href="" target="_blank" ng-cloak>{{user_cookie}}</a>
+						<div>用户名：</div>
+					</div>
+				</div>
+				
+
+				<div class="navi_item">
+					<a href=""><div class="all"><div class="blank"></div>全部商品</div></a>
+					<a href="#/series"><div class="series"><div class="blank"></div>XXX系列</div></a>
+					<a href="#/new_activity"><div class="new_activity"><div class="blank"></div>最新活动</div></a>
+					<a href="http://192.168.1.109:8080/cake_ssh/user_toUserCenter.action" target="_blank"><div class="user"><div class="blank"></div>用户中心</div></a>
+				</div>
+			</div>
+		</div>
+
+		<div id="myCarousel" class="carousel slide" data-interval="3000" style="margin-top: 20px;">
+			<!-- 轮播（Carousel）指标 -->
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+			</ol>   
+
+			<!-- 轮播（Carousel）项目 -->
+			<div class="carousel-inner">
+				<div class="item active">
+					<a href="#" target="_blank"><div id="a1" class="a1"><img src="../images/a1.jpg" alt="活动一"></div></a>
+				</div>
+				<div class="item">
+					<a href="#" target="_blank"><div id="a2" class="a2"><img src="../images/a2.jpg" alt="活动二"></div></a>
+				</div>
+				<div class="item">
+					<a href="#" target="_blank"><div id="a3" class="a3"><img src="../images/a3.jpg" alt="活动三"></div></a>
+				</div>
+			</div>
+			<!-- 轮播（Carousel）导航 -->
+			<a class="carousel-control left" href="#myCarousel" data-slide="prev">
+				<div class="left1">
+					<canvas id="leftCan" width="50" height="50"></canvas>
+				</div>
+			</a>
+			<a class="carousel-control right" href="#myCarousel" data-slide="next">
+				<div class="right1">
+					<canvas id="rightCan" width="50" height="50"></canvas>
+				</div>
+			</a>
+
+		</div>
+
+		<div class="container-fluid cake_item" ng-controller="ItemCtrl">
+			<div class="row-fluid">
+				<div class="span10 cake">
+					<div class="container-fluid">
+						<div class="row hidden-phone">
+							<img class="span2 offset5" src="../images/cake_item.png" alt="蛋糕列表logo">
+						</div>
+						<div class="row" style="border-bottom: solid 1px #000;">
+							<div class="span2 offset5 cake_item_font">蛋糕</div>
+						</div>
+						<div ng-view style="display: none;"></div>
+						<div class="cake_div">
+							<div class="cake1" ng-hide="!one_cake">
+								<div class="cakes">
+									<a id="cakes1" href="cake1.html" target="_blank"><img src="../images/cake1.jpg" onmousemove="goup(1)" onmouseout="godown(1)"></a>
+									<a href="cake1.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info1" class="cake_money" onmousemove="goup(1)" onmouseout="godown(1)">
+											<p>2磅/298RMB</p>
+											<div>
+												甜度系数<div class="icon-star-empty"></div><div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>
+								
+								<div class="cake_info">
+									<p>Napoleon 1893</p>
+									<p>拿破仑1893</p>
+								</div>
+							</div>
+
+							<div class="cake2" ng-hide="!three_cake">
+								<div class="cakes">
+									<a id="cakes2" href="cake2.html" target="_blank"><img src="../images/cake2.jpg" onmousemove="goup(2)" onmouseout="godown(2)"></a>
+									<a href="cake2.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info2" class="cake_money" onmousemove="goup(2)" onmouseout="godown(2)">
+											<p>2磅/298RMB</p>
+											<div>
+												甜度系数
+												<div class="icon-star-empty"></div>
+												<div class="icon-star-empty"></div>
+												<div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>								
+								<div class="cake_info">
+									<p>Choco~Mariage</p>
+									<p>浓巧 迷情冰淇淋蛋糕</p>
+								</div>
+							</div>
+
+							<div class="cake3" ng-hide="!two_cake">
+								<div class="cakes">
+									<a id="cakes3" href="cake3.html" target="_blank"><img src="../images/cake3.jpg" onmousemove="goup(3)" onmouseout="godown(3)"></a>
+									<a href="cake3.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info3" class="cake_money" onmousemove="goup(3)" onmouseout="godown(3)">
+											<p>2磅/298RMB</p>
+											<div>
+												甜度系数
+												<div class="icon-star-empty"></div>
+												<div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>								
+								<div class="cake_info">
+									<p>La Foret noir</p>
+									<p>黑森林拿破仑</p>
+								</div>
+							</div>
+
+							<div class="cake4" ng-hide="!one_cake">
+								<div class="cakes">
+									<a id="cakes4" href="cake4.html" target="_blank"><img src="../images/cake4.jpg" onmousemove="goup(4)" onmouseout="godown(4)"></a>
+									<a href="cake4.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info4" class="cake_money" onmousemove="goup(4)" onmouseout="godown(4)">
+											<p>1.5磅/298RMB</p>
+											<div>
+												甜度系数
+												<div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>								
+								<div class="cake_info">
+									<p>Bonhomme de neige</p>
+									<p>雪孩子冰淇淋蛋糕</p>
+								</div>
+							</div>
+
+							<div class="cake5" ng-hide="!two_cake">
+								<div class="cakes">
+									<a id="cakes5" href="cake5.html" target="_blank"><img src="../images/cake5.jpg" onmousemove="goup(5)" onmouseout="godown(5)"></a>
+									<a href="cake5.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info5" class="cake_money" onmousemove="goup(5)" onmouseout="godown(5)">
+											<p>1.5磅/298RMB</p>
+											<div>
+												甜度系数
+												<div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>								
+								<div class="cake_info">
+									<p>Luke et dondon</p>
+									<p>卢克和咚咚冰淇淋蛋糕</p>
+								</div>
+							</div>
+
+							<div class="cake6" ng-hide="!one_cake">
+								<div class="cakes">
+									<a id="cakes6" href="cake6.html" target="_blank"><img src="../images/cake6.jpg" onmousemove="goup(6)" onmouseout="godown(6)"></a>
+									<a href="cake6.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info6" class="cake_money" onmousemove="goup(6)" onmouseout="godown(6)">
+											<p>2.5磅/318RMB</p>
+											<div>
+												甜度系数
+												<div class="icon-star-empty"></div>
+												<div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>								
+								<div class="cake_info">
+									<p>lapin detendu</p>
+									<p>安逸兔</p>
+								</div>
+							</div>
+
+							<div class="cake7" ng-hide="!three_cake">
+								<div class="cakes">
+									<a id="cakes7" href="cake7.html" target="_blank"><img src="../images/cake7.jpg" onmousemove="goup(7)" onmouseout="godown(7)"></a>
+									<a href="cake7.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info7" class="cake_money" onmousemove="goup(7)" onmouseout="godown(7)">
+											<p>2磅/298RMB</p>
+											<div>
+												甜度系数
+												<div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>								
+								<div class="cake_info">
+									<p>Napoleon aux myrtilles</p>
+									<p>蓝莓轻乳拿破仑</p>
+								</div>
+							</div>
+
+							<div class="cake8" ng-hide="!one_cake">
+								<div class="cakes">
+									<a id="cakes8" href="cake8.html" target="_blank"><img src="../images/cake8.jpg" onmousemove="goup(8)" onmouseout="godown(8)"></a>
+									<a href="cake8.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info8" class="cake_money" onmousemove="goup(8)" onmouseout="godown(8)">
+											<p>1.5磅/298RMB</p>
+											<div>
+												甜度系数
+												<div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>								
+								<div class="cake_info">
+									<p>Jardin d'Alice</p>
+									<p>爱丽丝花镜</p>
+								</div>
+							</div>
+
+							<div class="cake9" ng-hide="!three_cake">
+								<div class="cakes">
+									<a id="cakes9" href="cake9.html" target="_blank"><img src="../images/cake9.jpg" onmousemove="goup(9)" onmouseout="godown(9)"></a>
+									<a href="cake9.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info9" class="cake_money" onmousemove="goup(9)" onmouseout="godown(9)">
+											<p>标准款/298RMB</p>
+											<div>
+												甜度系数
+												<div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>								
+								<div class="cake_info">
+									<p>Nino</p>
+									<p>尼诺</p>
+								</div>
+							</div>
+
+							<div class="cake10" ng-hide="!two_cake">
+								<div class="cakes">
+									<a id="cakes10" href="cake10.html" target="_blank"><img src="../images/cake10.jpg" onmousemove="goup(10)" onmouseout="godown(10)"></a>
+									<a href="cake10.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info10" class="cake_money" onmousemove="goup(10)" onmouseout="godown(10)">
+											<p>2磅/298RMB</p>
+											<div>
+												甜度系数
+												<div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>								
+								<div class="cake_info">
+									<p>Velour rouge</p>
+									<p>蔓越莓红丝绒</p>
+								</div>
+							</div>
+
+							<div class="cake11" ng-hide="!one_cake">
+								<div class="cakes">
+									<a id="cakes11" href="cake11.html" target="_blank"><img src="../images/cake11.jpg" onmousemove="goup(11)" onmouseout="godown(11)"></a>
+									<a href="cake11.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info11" class="cake_money" onmousemove="goup(11)" onmouseout="godown(11)">
+											<p>2磅/318RMB</p>
+											<div>
+												甜度系数
+												<div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>
+								
+								<div class="cake_info">
+									<p>Ricotta</p>
+									<p>瑞可塔厚爱</p>
+								</div>
+							</div>
+
+							<div class="cake12" ng-hide="!three_cake">
+								<div class="cakes">
+									<a id="cakes12" href="cake12.html" target="_blank"><img src="../images/cake12.jpg" onmousemove="goup(12)" onmouseout="godown(12)"></a>
+									<a href="cake12.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info12" class="cake_money" onmousemove="goup(12)" onmouseout="godown(12)">
+											<p>2磅/318RMB</p>
+											<div>
+												甜度系数
+												<div class="icon-star-empty"></div>
+												<div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>								
+								<div class="cake_info">
+									<p>Pink Rosette</p>
+									<p>Pink·罗赛特</p>
+								</div>
+							</div>
+
+							<div class="cake13" ng-hide="!two_cake">
+								<div class="cakes">
+									<a id="cakes13" href="cake13.html" target="_blank"><img src="../images/cake13.jpg" onmousemove="goup(13)" onmouseout="godown(13)"></a>
+									<a href="cake13.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info13" class="cake_money" onmousemove="goup(13)" onmouseout="godown(13)">
+											<p>2磅/318RMB</p>
+											<div>
+												甜度系数
+												<div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>								
+								<div class="cake_info">
+									<p>bonbon</p>
+									<p>棒棒糖</p>
+								</div>
+							</div>
+
+							<div class="cake14" ng-hide="!one_cake">
+								<div class="cakes">
+									<a id="cakes14" href="cake14.html" target="_blank"><img src="../images/cake14.jpg" onmousemove="goup(14)" onmouseout="godown(14)"></a>
+									<a href="cake14.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info14" class="cake_money" onmousemove="goup(14)" onmouseout="godown(14)">
+											<p>约2磅/398RMB</p>
+											<div>
+												甜度系数
+												<div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>								
+								<div class="cake_info">
+									<p>Josephine</p>
+									<p>约瑟芬玫瑰</p>
+								</div>
+							</div>
+
+							<div class="cake15" ng-hide="!two_cake">
+								<div class="cakes">
+									<a id="cakes15" href="cake15.html" target="_blank"><img src="../images/cake15.jpg" onmousemove="goup(15)" onmouseout="godown(15)"></a>
+									<a href="cake15.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info15" class="cake_money" onmousemove="goup(15)" onmouseout="godown(15)">
+											<p>2磅/298RMB</p>
+											<div>
+												甜度系数
+												<div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>								
+								<div class="cake_info">
+									<p>Genoise cafe</p>
+									<p>卡法香缇</p>
+								</div>
+							</div>
+
+							<div class="cake16" ng-hide="!one_cake">
+								<div class="cakes">
+									<a id="cakes16" href="cake16.html" target="_blank"><img src="../images/cake16.jpg" onmousemove="goup(16)" onmouseout="godown(16)"></a>
+									<a href="cake16.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info16" class="cake_money" onmousemove="goup(16)" onmouseout="godown(16)">
+											<p>2磅/318RMB</p>
+											<div>
+												甜度系数
+												<div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>								
+								<div class="cake_info">
+									<p>Tarte au durian</p>
+									<p>榴莲雪塔</p>
+								</div>
+							</div>
+
+							<div class="cake17" ng-hide="!three_cake">
+								<div class="cakes">
+									<a id="cakes17" href="cake17.html" target="_blank"><img src="../images/cake17.jpg" onmousemove="goup(17)" onmouseout="godown(17)"></a>
+									<a href="cake17.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info17" class="cake_money" onmousemove="goup(17)" onmouseout="godown(17)">
+											<p>2磅/298RMB</p>
+											<div>
+												甜度系数
+												<div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>								
+								<div class="cake_info">
+									<p>Gateau de crepes</p>
+									<p>法香奶油可丽</p>
+								</div>
+							</div>
+
+							<div class="cake18" ng-hide="!one_cake">
+								<div class="cakes">
+									<a id="cakes18" href="cake18.html" target="_blank"><img src="../images/cake18.jpg" onmousemove="goup(18)" onmouseout="godown(18)"></a>
+									<a href="cake18.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info18" class="cake_money" onmousemove="goup(18)" onmouseout="godown(18)">
+											<p>2磅/298RMB</p>
+											<div>
+												甜度系数
+												<div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>								
+								<div class="cake_info">
+									<p>Soiree Bailay's</p>
+									<p>百利派对</p>
+								</div>
+							</div>
+
+							<div class="cake19" ng-hide="!three_cake">
+								<div class="cakes">
+									<a id="cakes19" href="cake19.html" target="_blank"><img src="../images/cake19.jpg" onmousemove="goup(19)" onmouseout="godown(19)"></a>
+									<a href="cake19.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info19" class="cake_money" onmousemove="goup(19)" onmouseout="godown(19)">
+											<p>2磅/298RMB</p>
+											<div>
+												甜度系数
+												<div class="icon-star-empty"></div>
+												<div class="icon-star-empty"></div>
+												<div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>								
+								<div class="cake_info">
+									<p>Choco~Mariage</p>
+									<p>浓巧 迷情冰淇淋蛋糕</p>
+								</div>
+							</div>
+
+							<div class="cake20" ng-hide="!two_cake">
+								<div class="cakes">
+									<a id="cakes20" href="cake20.html" target="_blank"><img src="../images/cake20.jpg" onmousemove="goup(20)" onmouseout="godown(20)"></a>
+									<a href="cake20.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info20" class="cake_money" onmousemove="goup(20)" onmouseout="godown(20)">
+											<p>2磅/298RMB</p>
+											<div>
+												甜度系数
+												<div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>								
+								<div class="cake_info">
+									<p>Mangue chantilly</p>
+									<p>芒果·Mangue</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="container-fluid">
+						<div class="row cake_item_logo hidden-phone">
+							<img class="span2 offset5" src="../images/snack_item.png" alt="蛋糕列表logo">
+						</div>
+						<div class="row" style="border-bottom: solid 1px #000;">
+							<div class="span2 offset5 cake_item_font">零食</div>
+						</div>
+						<div id="lingshi" class="snack_div">
+							<div class="snack1">
+								<div class="snacks">
+									<a id="snacks1" href="snack1.html" target="_blank"><img src="../images/snack1.jpg" onmousemove="goup_snack(1)" onmouseout="godown_snack(1)"></a>
+									<a href="snack1.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info_snack1" class="cake_money" onmousemove="goup_snack(1)" onmouseout="godown_snack(1)">
+											<p>原味/78RMB</p>
+											<div>
+												甜度系数
+												<div class="icon-star-empty"></div>
+												<div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>								
+								<div class="cake_info">
+									<p>cookies au beurre</p>
+									<p>云顶小花曲奇</p>
+								</div>
+							</div>
+
+							<div class="snack2">
+								<div class="snacks">
+									<a id="snacks2" href="snack2.html" target="_blank"><img src="../images/snack2.jpg" onmousemove="goup_snack(2)" onmouseout="godown_snack(2)"></a>
+									<a href="snack2.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info_snack2" class="cake_money" onmousemove="goup_snack(2)" onmouseout="godown_snack(2)">
+											<p>240克/116RMB</p>
+											<div>
+												甜度系数
+												<div class="icon-star-empty"></div>
+												<div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>								
+								<div class="cake_info">
+									<p>M'chocolat</p>
+									<p>V.S.O.P生巧</p>
+								</div>
+							</div>
+
+							<div class="snack3">
+								<div class="snacks">
+									<a id="snacks3" href="snack3.html" target="_blank"><img src="../images/snack3.jpg" onmousemove="goup_snack(3)" onmouseout="godown_snack(3)"></a>
+									<a href="snack3.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info_snack3" class="cake_money" onmousemove="goup_snack(3)" onmouseout="godown_snack(3)">
+											<p>240克/116RMB</p>
+											<div>
+												甜度系数
+												<div class="icon-star-empty"></div>
+												<div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>								
+								<div class="cake_info">
+									<p>Chocolats mixtes</p>
+									<p>生巧组合</p>
+								</div>
+							</div>
+
+							<div class="snack4">
+								<div class="snacks">
+									<a id="snacks4" href="snack4.html" target="_blank"><img src="../images/snack4.jpg" onmousemove="goup_snack(4)" onmouseout="godown_snack(4)"></a>
+									<a href="snack4.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info_snack4" class="cake_money" onmousemove="goup_snack(4)" onmouseout="godown_snack(4)">
+											<p>1套/188RMB</p>
+											<div>
+												甜度系数
+												<div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>								
+								<div class="cake_info">
+									<p>Le temps des dessert</p>
+									<p>小“食”光大礼包</p>
+								</div>
+							</div>
+
+							<div class="snack5">
+								<div class="snacks">
+									<a id="snacks5" href="snack5.html" target="_blank"><img src="../images/snack5.jpg" onmousemove="goup_snack(5)" onmouseout="godown_snack(5)"></a>
+									<a href="snack5.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info_snack5" class="cake_money" onmousemove="goup_snack(5)" onmouseout="godown_snack(5)">
+											<p>120克/58RMB</p>
+											<div>
+												甜度系数
+												<div class="icon-star-empty"></div>
+												<div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>								
+								<div class="cake_info">
+									<p>1/4 chocolat au lait</p>
+									<p>1/4牛奶生巧</p>
+								</div>
+							</div>
+
+							<div class="snack6">
+								<div class="snacks">
+									<a id="snacks6" href="snack6.html" target="_blank"><img src="../images/snack6.jpg" onmousemove="goup_snack(6)" onmouseout="godown_snack(6)"></a>
+									<a href="snack6.html" target="_blank" style="text-decoration: none;">
+										<div id="money_info_snack6" class="cake_money" onmousemove="goup_snack(6)" onmouseout="godown_snack(6)">
+											<p>1盒/48RMB</p>
+											<div>
+												甜度系数
+												<div class="icon-star-empty"></div>
+											</div>
+										</div>
+									</a>
+								</div>								
+								<div class="cake_info">
+									<p>cheese cake</p>
+									<p>半熟芝士</p>
+								</div>
+							</div>
+						
+						</div>
+					</div>
+					
+
+				</div>
+
+				<div class="span2 item_navi visible-desktop">
+					<div class="container-fluid">
+						<div style="text-align: center;border-bottom: solid 1px #666;color: #666;">口味筛选</div>
+						<div class="row-fluid navi_font" style="margin-top: 10px;"><a href="#/all_cake"><div style="height: 35px;">全部蛋糕</div></a></div>
+						<div class="row-fluid navi_font"><a href="#/one_cake"><div style="height: 35px;">一系列</div></a></div>
+						<div class="row-fluid navi_font"><a href="#/two_cake"><div style="height: 35px;">二系列</div></a></div>
+						<div class="row-fluid navi_font"><a href="#/three_cake"><div style="height: 35px;">三系列</div></a></div>
+						<div class="row-fluid navi_font"><a href="" ng-click="chang()"><div style="height: 35px;">#零食</div></a></div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</body>
+</html>

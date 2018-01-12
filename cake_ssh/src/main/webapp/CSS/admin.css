@@ -1,0 +1,37 @@
+.formDiv{
+	margin-top: 50px;
+}
+.nameChinese,.nameEnglish,.cakeSeries,.goodsSize,.goodsPrice,.goodsSweetness,.goodsImg{
+	width: 30%;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	font-size: 20px;
+	font-family: '黑体';
+}
+.submitInp{
+	width: 150px;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+}
+.submitInp>input{
+	width: 100%;
+}
+.nameChinese>input,.nameEnglish>input,.cakeSeries>select,.goodsSize>input,.goodsPrice>input,.goodsSweetness>select{
+	width: 100%;
+	height: 40px;
+	font-size: 20px;
+}
+.showImg{
+	width: 100%;
+	height: 100%;
+}
+.showImg>img{
+	width: 20%;
+	height: 100%;
+	margin-left: 5%;
+	margin-top: 10px;
+}
